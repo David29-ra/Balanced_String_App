@@ -1,0 +1,8 @@
+<div class="container">
+  <%=form_with(model: Message.new, html: {}) do |form| %>
+    <p>Test your message</p>
+    <%= form.label "Escribe el mensaje: " %><br>
+    <%= form.text_field :body, placeholder: "message ..." %><br>
+    <%= form.submit "Test", class: "button" %><br>
+  <% end %>
+</div>
