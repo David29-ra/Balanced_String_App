@@ -6,28 +6,27 @@ $white: rgba(255,255,255,0.3);
 
 body {
   background: linear-gradient(45deg, #FC466B, #3F5EFB);
-  height: 100vh;
+  background-size: 100%;
   font-family: 'Montserrat', sans-serif;
 }
 
 .container {
-  position: absolute;
-  transform: translate(-50%,-50%);
-  top: 50%;
-  left: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
 }
 
 form {
   background: $white;
-  padding: 3em;
-  height: 320px;
+  padding: 20px;
+  height: 200px;
   border-radius: 20px;
   border-left: 1px solid $white;
   border-top: 1px solid $white;
   backdrop-filter: blur(10px);
   box-shadow: 20px 20px 40px -6px rgba(0,0,0,0.2);
   text-align: center;
-  position: relative;
   transition: all 0.2s ease-in-out;
   
   p {
@@ -36,7 +35,6 @@ form {
     opacity: 0.9;
     font-size: 2rem;
     margin-top: 0;
-    margin-bottom: 60px;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
   }
   
@@ -84,10 +82,10 @@ form {
       }
     }
     
-    &[type="button"] {
+    &[type="submit"] {
       margin-top: 10px;
-      width: 150px;
-      font-size: 1rem;
+      width: 100px;
+      font-size: 15px;
       
       &:hover {
         cursor: pointer;
@@ -100,7 +98,7 @@ form {
   }
   
   &:hover {
-    margin: 4px;
+    margin: 2px;
   }
 }
 
@@ -108,7 +106,7 @@ form {
   font-family: Montserrat, sans-serif;
   font-weight: 400;
   color: #fff;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
 }
 
 .drop {
@@ -168,7 +166,7 @@ button:focus {
     outline: none;
 }
 
-.label {
+label {
   font-weight: 500;
   color: #fff;
   opacity: 0.8;
@@ -176,4 +174,110 @@ button:focus {
   margin-top: 0;
   margin-bottom: 60px;
   text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+@media only screen and (max-width: 720px) {
+  .grid { grid-template-columns: repeat(1, 1fr); }
+}
+
+@media only screen and (min-width: 720px) {
+  .grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media only screen and (min-width: 1100px) {
+  .grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media only screen and (max-width: 478px) {
+  form { height: 220px; }
+}
+
+.card{
+  background: $white;
+  padding: 20px;
+  height: 100px;
+  width: 300px;
+  border-radius: 20px;
+  border-left: 1px solid $white;
+  border-top: 1px solid $white;
+  backdrop-filter: blur(10px);
+  box-shadow: 20px 20px 40px -6px rgba(0,0,0,0.2);
+  text-align: center;
+  transition: all 0.2s ease-in-out;
+  
+  p {
+    font-size: 18px;
+  }
+
+  &:hover {
+    margin: 2px;
+  }
+}
+
+.message {
+  word-break:break-all;
+  margin-bottom: 10px;
+
+  p {
+    margin: 0px;
+    font-size: 18px;
+    color: #fff;
+    opacity: 0.9;
+    font-weight: 500;
+  }
+}
+
+.alert{
+  width:80px;
+  height:80px;
+  padding:30px;
+  border-radius:5px;
+  box-shadow:0 0 15px 5px #ccc;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
 }

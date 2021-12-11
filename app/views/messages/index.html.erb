@@ -1,8 +1,20 @@
 <div class="container">
   <%=form_with(model: Message.new, html: {}) do |form| %>
     <p>Test your message</p>
-    <%= form.label "Escribe el mensaje: " %><br>
+    <%= form.label "Escribe el mensaje: " %>
     <%= form.text_field :body, placeholder: "message ..." %><br>
-    <%= form.submit "Test", class: "button" %><br>
+    <%= form.submit "Test", class: "button", id:"test" %><br>
   <% end %>
+
+  <div class="grid">
+    <% @messages.each do |message| %>
+      <div class="card">
+        <div class="message">
+          <p><%= '" '+ message.body + ' "' %></p>
+        </div>
+        <p><%= "Este mensaje es: " + message.status %></p>
+      </div>
+    <% end %>
+  </div>
 </div>
+<%= javascript_pack_tag "alert" %>
