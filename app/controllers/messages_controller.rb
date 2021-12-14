@@ -17,9 +17,23 @@ class MessagesController < ApplicationController
 
   private
 
-  def its_balanced?(message)
+  def its_balanced?(str)
+    help = parent(str)
+    parts = help[0].map { |string| braces_ok?(string) }
+    rest = braces_ok?(help[1])
+    [parts, rest].flatten.reduce(:*) == 1 ? 'balanceado' : 'desbalanceado'
+  end
+
+  def braces_ok?(message)
     message = message.gsub(/(:\(|:\)|[a-z]| |:|\([a-z]*:[a-z]*\))/, '')
-    valid_braces(message) ? 'balanceado' : 'desbalanceado'
+    valid_braces(message) ? 1 : 0
+  end
+
+  def parent(string, arr = [])
+    regex = /\([a-z: ]*\)|\([a-z: ]*:\([a-z: ]*\)|\([a-z: ]*:\)[a-z: ]*\)/
+    string.scan(regex) { |substring| arr << substring[1..-2] }
+    newstring = string.gsub(regex, '')
+    newstring.match?(regex) ? parent(newstring, arr) : [arr, newstring]
   end
 
   def valid_braces(braces)
