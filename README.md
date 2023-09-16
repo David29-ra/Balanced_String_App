@@ -20,10 +20,6 @@ Ejemplos:
     g. ":((" -> desbalanceado
     h. "a (b (c (d) c) b) a :)" -> balanceado (ej, si el último paréntesis es en realidad un emoticón)
 
-## To prove the app
-
-You can visit https://challenge-app-david29.herokuapp.com/
-
 ## About the app
 
 This Challenge was made in Ruby on Rails
